@@ -209,9 +209,19 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFD9D9D9),
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: Text("Histórico de Manutenção"),
+        title: Text(
+          "Histórico de Manutenção",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFD9D9D9),
+          ),
+        ),
+        backgroundColor: const Color(0xFF011689),
+        centerTitle: true,
+        elevation: 4,
+        iconTheme: const IconThemeData(color: Color(0xFFD9D9D9)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
