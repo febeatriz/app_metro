@@ -43,7 +43,7 @@ class _TelaConsultaExtintorState extends State<TelaConsultaExtintor> {
 
     try {
       final url =
-          Uri.parse('http://10.0.2.2:3001/patrimonio'); // Ajuste o endereço
+          Uri.parse('http://localhost:3001/patrimonio'); // Ajuste o endereço
       print('URL para buscar patrimônios: $url'); // Log
 
       final response = await http.get(url);
@@ -104,7 +104,7 @@ class _TelaConsultaExtintorState extends State<TelaConsultaExtintor> {
       _errorMessage = "";
     });
 
-    final url = Uri.parse('http://10.0.2.2:3001/extintor/$_patrimonio');
+    final url = Uri.parse('http://localhost:3001/extintor/$_patrimonio');
 
     try {
       final response = await http.get(url);
@@ -268,7 +268,7 @@ class _TelaConsultaExtintorState extends State<TelaConsultaExtintor> {
                 ? const CircularProgressIndicator(color: Colors.white)
                 : const Text(
                     'Buscar Extintor',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                   ),
           ),
         ],
