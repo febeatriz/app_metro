@@ -13,7 +13,7 @@ const app = express();
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'imtdb',
+    password: 'database',
     database: 'metro_sp',
 });
 

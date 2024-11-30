@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -274,9 +272,9 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
                     child: ElevatedButton(
                       onPressed: () => _selecionarData(context, 'manutencao'),
                       child: Text(
-                          dataManutencao == null
-                              ? 'Data da Manutenção'
-                              : DateFormat('dd/MM/yyyy').format(dataManutencao!),
+                        dataManutencao == null
+                            ? 'Data da Manutenção'
+                            : DateFormat('dd/MM/yyyy').format(dataManutencao!),
                       ),
                     ),
                   ),
@@ -285,9 +283,9 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
                     child: ElevatedButton(
                       onPressed: () => _selecionarData(context, 'recarga'),
                       child: Text(
-                          ultimaRecarga == null
-                              ? 'Última Recarga'
-                              : DateFormat('dd/MM/yyyy').format(ultimaRecarga!),
+                        ultimaRecarga == null
+                            ? 'Última Recarga'
+                            : DateFormat('dd/MM/yyyy').format(ultimaRecarga!),
                       ),
                     ),
                   ),
@@ -299,9 +297,9 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
                     child: ElevatedButton(
                       onPressed: () => _selecionarData(context, 'inspecao'),
                       child: Text(
-                          proximaInspecao == null
-                              ? 'Próxima Inspeção'
-                              : DateFormat('dd/MM/yyyy').format(proximaInspecao!),
+                        proximaInspecao == null
+                            ? 'Próxima Inspeção'
+                            : DateFormat('dd/MM/yyyy').format(proximaInspecao!),
                       ),
                     ),
                   ),
@@ -310,9 +308,9 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
                     child: ElevatedButton(
                       onPressed: () => _selecionarData(context, 'vencimento'),
                       child: Text(
-                          vencimento == null
-                              ? 'Data de Vencimento'
-                              : DateFormat('dd/MM/yyyy').format(vencimento!),
+                        vencimento == null
+                            ? 'Data de Vencimento'
+                            : DateFormat('dd/MM/yyyy').format(vencimento!),
                       ),
                     ),
                   ),
@@ -334,7 +332,8 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   padding: EdgeInsets.symmetric(vertical: 16),
-                  textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  textStyle:
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 child: Text("Salvar Manutenção"),
               ),
