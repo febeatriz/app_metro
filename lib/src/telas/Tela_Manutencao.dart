@@ -260,10 +260,14 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
           ),
           onPressed: () => _selecionarData(context, tipoData),
           child: Text(
-            date == null ? label : DateFormat('dd/MM/yyyy').format(date),
+            date == null
+                ? "Selecione a data"
+                : DateFormat('dd/MM/yyyy').format(date),
+            style: TextStyle(color: date == null ? Colors.grey : Colors.black),
           ),
         ),
       ],
     );
   }
+
 }
