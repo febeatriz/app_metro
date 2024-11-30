@@ -117,78 +117,114 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
         centerTitle: true,
         backgroundColor: const Color(0xFF011689),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Selecione o Extintor:",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              DropdownButtonFormField<int>(
-                value: idExtintor,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                hint: const Text("Selecione o extintor"),
-                items: extintores.map((extintor) {
-                  return DropdownMenuItem<int>(
-                    value: extintor['Patrimonio'],
-                    child: Text('Extintor ${extintor['Patrimonio']}'),
-                  );
-                }).toList(),
-                onChanged: (int? value) {
-                  setState(() {
-                    idExtintor = value;
-                  });
-                },
-              ),
-              const SizedBox(height: 16),
-              _buildTextField(descricaoController, "Descrição da Manutenção"),
-              const SizedBox(height: 16),
-              _buildTextField(responsavelController, "Responsável"),
-              const SizedBox(height: 16),
-              _buildTextField(observacoesController, "Observações"),
-              const SizedBox(height: 16),
-              _buildDateButton(
-                  "Data de Manutenção", dataManutencao, 'manutencao'),
-              const SizedBox(height: 8),
-              _buildDateButton("Última Recarga", ultimaRecarga, 'recarga'),
-              const SizedBox(height: 8),
-              _buildDateButton("Próxima Inspeção", proximaInspecao, 'inspecao'),
-              const SizedBox(height: 8),
-              _buildDateButton("Vencimento", vencimento, 'vencimento'),
-              const SizedBox(height: 16),
-              SwitchListTile(
-                title: const Text("Revisar Status do Extintor"),
-                value: revisarStatus,
-                onChanged: (bool value) {
-                  setState(() {
-                    revisarStatus = value;
-                  });
-                },
-              ),
-              const SizedBox(height: 16),
-              Center(
-                child: ElevatedButton(
-                  onPressed: _salvarManutencao,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
+      body: Center(
+        child: Card(
+          elevation: 8,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          color: const Color(0xFFD9D9D9), // Cor do card
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Text(
+                    "Selecione o Extintor:",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  child: const Text(
-                    "Salvar Manutenção",
-                    style: TextStyle(fontSize: 16),
+                  const SizedBox(height: 8),
+                  DropdownButtonFormField<int>(
+                    value: idExtintor,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      filled: true,
+                      fillColor: const Color(0xFFD9D9D9), // Cor do campo
+                    ),
+                    hint: const Text("Selecione o extintor"),
+                    items: extintores.map((extintor) {
+                      return DropdownMenuItem<int>(
+                        value: extintor['Patrimonio'],
+                        child: Text('Extintor ${extintor['Patrimonio']}'),
+                      );
+                    }).toList(),
+                    onChanged: (int? value) {
+                      setState(() {
+                        idExtintor = value;
+                      });
+                    },
                   ),
-                ),
+                  const SizedBox(height: 16),
+                  _buildTextField(
+                      descricaoController, "Descrição da Manutenção"),
+                  const SizedBox(height: 16),
+                  _buildTextField(responsavelController, "Responsável"),
+                  const SizedBox(height: 16),
+                  _buildTextField(observacoesController, "Observações"),
+                  const SizedBox(height: 16),
+
+                  // Fila de duas datas (Data de Manutenção e Última Recarga)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: _buildDateField(
+                            "Data de Manutenção", dataManutencao, 'manutencao'),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: _buildDateField(
+                            "Última Recarga", ultimaRecarga, 'recarga'),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+
+                  // Fila de duas datas (Próxima Inspeção e Vencimento)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: _buildDateField(
+                            "Selecione a data", proximaInspecao, 'inspecao'),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: _buildDateField(
+                            "Vencimento", vencimento, 'vencimento'),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+
+                  SwitchListTile(
+                    title: const Text("Revisar Status do Extintor"),
+                    value: revisarStatus,
+                    onChanged: (bool value) {
+                      setState(() {
+                        revisarStatus = value;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: _salvarManutencao,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 32, vertical: 16),
+                      ),
+                      child: const Text(
+                        "Salvar Manutenção",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -202,22 +238,30 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
         labelText: labelText,
         border: OutlineInputBorder(),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: const Color(0xFFD9D9D9), // Cor dos campos
       ),
     );
   }
 
-  Widget _buildDateButton(String label, DateTime? date, String tipoData) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        side: BorderSide(color: Colors.grey.shade400),
-      ),
-      onPressed: () => _selecionarData(context, tipoData),
-      child: Text(
-        date == null ? label : DateFormat('dd/MM/yyyy').format(date),
-      ),
+  Widget _buildDateField(String label, DateTime? date, String tipoData) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            side: BorderSide(color: Colors.grey.shade400),
+          ),
+          onPressed: () => _selecionarData(context, tipoData),
+          child: Text(
+            date == null ? label : DateFormat('dd/MM/yyyy').format(date),
+          ),
+        ),
+      ],
     );
   }
 }
