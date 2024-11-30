@@ -116,6 +116,8 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFF011689),
+        elevation: 4,
+        iconTheme: const IconThemeData(color: Color(0xFFD9D9D9)), 
       ),
       body: Center(
         child: Card(
@@ -187,7 +189,7 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
                     children: [
                       Expanded(
                         child: _buildDateField(
-                            "Selecione a data", proximaInspecao, 'inspecao'),
+                            "Próxima Inspeção", proximaInspecao, 'inspecao'),
                       ),
                       const SizedBox(width: 16),
                       Expanded(
@@ -212,13 +214,13 @@ class _ManutencaoExtintorPageState extends State<ManutencaoExtintorPage> {
                     child: ElevatedButton(
                       onPressed: _salvarManutencao,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
+                        backgroundColor: const Color(0xFF011689),
                         padding: const EdgeInsets.symmetric(
                             horizontal: 32, vertical: 16),
                       ),
                       child: const Text(
                         "Salvar Manutenção",
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16, color: Color(0xFFD9D9D9)),
                       ),
                     ),
                   ),
